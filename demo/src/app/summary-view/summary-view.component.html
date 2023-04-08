@@ -1,0 +1,26 @@
+<div class="container mt-3">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Sampling Time</th>
+          <th>Project Name</th>
+          <th>Construction Count</th>
+          <th>Is Construction Completed</th>
+          <th>Length of the Road</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let data of SummaryData.Datas; let i = index">
+          <tr>
+            <td>{{ data.SamplingTime }}</td>
+            <td>{{ getProperty(data, "Project Name")?.Value }}</td>
+            <td>{{ getProperty(data, "Construction Count")?.Value }}</td>
+            <td>{{ getProperty(data, "Is Construction Completed")?.Value }}</td>
+            <td>{{ getProperty(data, "Length of the road")?.Value }}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    <button routerLink="/detailview">Go to DetailView</button>
+  </div>
+  

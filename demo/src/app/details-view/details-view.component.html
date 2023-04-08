@@ -1,0 +1,57 @@
+<div class="container mt-3">
+    <select (change)="onSamplingTimeSelect($event)">
+      <option value="">Select a Sampling Time</option>
+      <option *ngFor="let data of detailData.Datas" [value]="data.SamplingTime">
+        {{ data.SamplingTime }}
+      </option>
+    </select>
+  
+    <div *ngIf="selectedSamplingTime">
+      <div *ngFor="let data of detailData.Datas">
+        <div *ngIf="data.SamplingTime === selectedSamplingTime">
+          <div class="container mt-3">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Project Name</th>
+                  <th>Construction Count</th>
+                  <th>Is Construction Completed</th>
+                  <th>Length of the Road</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <input
+                      [(ngModel)]="getProperty(data, 'Project Name').Value"/>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      [(ngModel)]="getProperty(data, 'Construction Count').Value"/>
+                  </td>
+                  <td>
+                    <select
+                      [(ngModel)]="
+                        getProperty(data, 'Is Construction Completed').Value">
+                      <option [ngValue]="true">true</option>
+                      <option [ngValue]="false">false</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      [(ngModel)]="getProperty(data, 'Length of the road').Value"/>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <button class="mr-2" (click)="onSave()">Save</button>
+      <button class="ml-2" routerLink="/">Go to Summaryview</button>
+    </div>
+    <div></div>
+  </div>
+  
